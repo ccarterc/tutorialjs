@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.tutorialjs{
+		position:absolute;
+		display:none;
+		-webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+		-moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+		box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		border: 1px solid blue;
+		padding:10px;
+	}
+	body{
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<input type="checkbox" name="tutorialMode"><br><br><br>
+
+	<input type="text" id="myInput" name="test" style="margin-left:auto;margin-right:auto;">
+	<button id="myButton">My Button</button>
+	<br>
+	<br>
+	<br>
+	<br>
+	<input type="text" id="myOtherInput" name="test2" style="float:right;">
+
+
+	<!--Tutorial 1-->
+	<div id="myFirstTutBox" class="tutorialjs" data-tutNum="0" data-sequenceNum="0" data-anchorPosition="bottomLeft" data-pointTo="#myInput">
+	This is my text box.  It's totally cool.<br>
+	<button id="tutOneSeqTwoBtn">Next</button>
+	</div>
+
+	<div class="tutorialjs" data-tutNum="0" data-sequenceNum="1" data-anchorPosition="bottomLeft" data-pointTo="#myButton">
+	This is my button.  It's totally rad.
+	</div>
+
+	<div class="tutorialjs" data-tutNum="0" data-sequenceNum="2" data-anchorPosition="bottomLeft" data-pointTo="#myButton">
+	This is my last thing a mah jig.
+	</div>
+
+	<!--Tutorial 2-->
+	<div class="tutorialjs" data-tutNum="1" data-sequenceNum="0" data-anchorPosition="bottomRight">
+	</div>
+
+	<div class="tutorialjs" data-tutNum="1" data-sequenceNum="1" data-anchorPosition="bottomRight">
+	</div>
+
+	<div class="tutorialjs" data-tutNum="1" data-sequenceNum="2" data-anchorPosition="bottomRight">
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js"></script>
+	<script src="tutorial.js"></script>
+	<script>
+		myTut.init('myFirstTutBox');
+		myTut.start(0);
+		$(document).on('click', '#tutOneSeqTwoBtn', function(){
+			$(this).parent().hide();
+			myTut.start(0);
+		});
+		$(document).on('tutFinished', function(tut){
+
+		});
+	</script>
+</body>
+</html>
